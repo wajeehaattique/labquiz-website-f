@@ -10,27 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
        COLOR SELECTION
     ========================= */
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-    const colorButtons = document.querySelectorAll(".color-button");
-    const selectedColor = document.getElementById("selectedColor");
-=======
->>>>>>> home
     const colorButtons =
         document.querySelectorAll(".color-button");
 
     const selectedColor =
         document.getElementById("selectedColor");
 
-<<<<<<< HEAD
-=======
-    if (colorButtons.length > 0 && !localStorage.getItem("selectedColor")) {
-        localStorage.setItem("selectedColor", "SILVER");
-}
 
->>>>>>> Stashed changes
->>>>>>> home
+if (colorButtons.length > 0 && !localStorage.getItem("selectedColor")) {
+    localStorage.setItem("selectedColor", "SILVER");
+}
 
     colorButtons.forEach(function (button) {
 
