@@ -4,92 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>REWIND | Order</title>
+    <title>REWIND — Order</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVIGATION BAR -->
-    <header>
-        <nav class="navbar">
+    <!-- NAVBAR -->
+    <nav class="navbar">
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">◀</span>
-                REWIND
-            </a>
+        <div class="logo">
+            REWIND<span>®</span>
+        </div>
 
-            <div class="nav-links">
-                <a href="index.html">HOME</a>
-                <a href="product.html">CAMERA</a>
-                <a href="order.html" class="active">ORDER</a>
-            </div>
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="product.html">CAMERA</a>
+            <a href="order.html" class="active">ORDER</a>
+        </div>
 
-            <a href="order.html" class="shop-button">
-                SHOP NOW
-            </a>
+        <a href="order.html" class="nav-button">
+            SHOP NOW →
+        </a>
 
-        </nav>
-    </header>
+    </nav>
 
 
-    <main>
+    <!-- ORDER PAGE -->
+    <main class="order-page">
 
-        <!-- ORDER PAGE INTRO -->
-        <section class="order-header">
+        <div class="order-container">
 
-            <p class="small-label">// CHECKOUT</p>
+            <!-- LEFT SIDE -->
+            <section class="order-form">
 
-            <h1>Get your REWIND.</h1>
+                <p class="product-label">REWIND MINI</p>
 
-            <p>
-                Choose your camera, add your accessories,
-                and tell us where to send it.
-            </p>
+                <h1>ORDER YOUR CAMERA.</h1>
 
-        </section>
-
-
-        <!-- ORDER CONTENT -->
-        <section class="order-section">
-
-            <!-- LEFT: FORM -->
-            <div class="order-form">
-
-                <h2>01 — Camera</h2>
+                <p class="order-intro">
+                    Choose your camera, add accessories,
+                    and enter your delivery details.
+                </p>
 
 
-                <!-- COLOR -->
-                <div class="form-group">
+                <!-- CAMERA OPTIONS -->
+                <div class="form-section">
+
+                    <h2>01 — CAMERA</h2>
 
                     <label for="orderColor">
-                        CAMERA COLOR
+                        COLOR
                     </label>
 
                     <select id="orderColor">
 
-                        <option value="Silver">
+                        <option value="SILVER">
                             Silver
                         </option>
 
-                        <option value="Pink">
+                        <option value="PINK">
                             Pink
                         </option>
 
-                        <option value="Black">
+                        <option value="BLACK">
                             Black
                         </option>
 
                     </select>
 
-                </div>
 
-
-                <!-- QUANTITY -->
-                <div class="form-group">
-
-                    <label for="quantity">
+                    <!-- QUANTITY -->
+                    <label>
                         QUANTITY
                     </label>
 
@@ -97,7 +84,8 @@
 
                         <button
                             type="button"
-                            id="minusButton">
+                            id="minusButton"
+                        >
                             −
                         </button>
 
@@ -106,11 +94,13 @@
                             id="quantity"
                             value="1"
                             min="1"
-                            max="5">
+                            max="5"
+                        >
 
                         <button
                             type="button"
-                            id="plusButton">
+                            id="plusButton"
+                        >
                             +
                         </button>
 
@@ -120,140 +110,121 @@
 
 
                 <!-- ACCESSORIES -->
-                <h2 class="form-heading">
-                    02 — Accessories
-                </h2>
+                <div class="form-section">
 
+                    <h2>02 — ACCESSORIES</h2>
 
-                <div class="accessory-list">
-
-                    <label class="accessory">
+                    <label class="accessory-option">
 
                         <input
                             type="checkbox"
                             class="accessory-check"
                             data-price="15"
-                            data-name="Camera Pouch">
+                            data-name="Camera Pouch"
+                        >
 
                         <span>
-                            <strong>Camera Pouch</strong>
-                            <small>Protective soft pouch</small>
+                            Camera Pouch
                         </span>
 
-                        <b>+$15</b>
+                        <strong>
+                            +$15
+                        </strong>
 
                     </label>
 
 
-                    <label class="accessory">
+                    <label class="accessory-option">
 
                         <input
                             type="checkbox"
                             class="accessory-check"
                             data-price="10"
-                            data-name="Wrist Strap">
+                            data-name="Wrist Strap"
+                        >
 
                         <span>
-                            <strong>Extra Wrist Strap</strong>
-                            <small>Additional adjustable strap</small>
+                            Extra Wrist Strap
                         </span>
 
-                        <b>+$10</b>
+                        <strong>
+                            +$10
+                        </strong>
 
                     </label>
 
 
-                    <label class="accessory">
+                    <label class="accessory-option">
 
                         <input
                             type="checkbox"
                             class="accessory-check"
                             data-price="20"
-                            data-name="128GB microSD Card">
+                            data-name="128GB microSD Card"
+                        >
 
                         <span>
-                            <strong>128GB microSD Card</strong>
-                            <small>Extra storage for your photos</small>
+                            128GB microSD Card
                         </span>
 
-                        <b>+$20</b>
+                        <strong>
+                            +$20
+                        </strong>
 
                     </label>
 
                 </div>
 
 
-                <!-- CUSTOMER INFORMATION -->
-                <h2 class="form-heading">
-                    03 — Your Information
-                </h2>
+                <!-- CUSTOMER DETAILS -->
+                <div class="form-section">
+
+                    <h2>03 — YOUR DETAILS</h2>
 
 
-                <div class="form-row">
+                    <label for="fullName">
+                        FULL NAME
+                    </label>
 
-                    <div class="form-group">
-
-                        <label for="fullName">
-                            FULL NAME
-                        </label>
-
-                        <input
-                            type="text"
-                            id="fullName"
-                            placeholder="Your name">
-
-                    </div>
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Your name"
+                    >
 
 
-                    <div class="form-group">
+                    <label for="email">
+                        EMAIL
+                    </label>
 
-                        <label for="email">
-                            EMAIL
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="you@example.com">
-
-                    </div>
-
-                </div>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="you@example.com"
+                    >
 
 
-                <div class="form-row">
+                    <label for="phone">
+                        PHONE
+                    </label>
 
-                    <div class="form-group">
-
-                        <label for="phone">
-                            PHONE
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="phone"
-                            placeholder="+92 300 0000000">
-
-                    </div>
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="03XX XXXXXXX"
+                    >
 
 
-                    <div class="form-group">
+                    <label for="city">
+                        CITY
+                    </label>
 
-                        <label for="city">
-                            CITY
-                        </label>
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Your city"
+                    >
 
-                        <input
-                            type="text"
-                            id="city"
-                            placeholder="Your city">
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
 
                     <label for="address">
                         DELIVERY ADDRESS
@@ -261,19 +232,16 @@
 
                     <textarea
                         id="address"
-                        rows="4"
-                        placeholder="Enter your complete delivery address"></textarea>
+                        placeholder="Your complete address"
+                    ></textarea>
 
                 </div>
 
 
                 <!-- PAYMENT -->
-                <h2 class="form-heading">
-                    04 — Payment
-                </h2>
+                <div class="form-section">
 
-
-                <div class="payment-options">
+                    <h2>04 — PAYMENT</h2>
 
                     <label class="payment-option">
 
@@ -281,12 +249,10 @@
                             type="radio"
                             name="payment"
                             value="Cash on Delivery"
-                            checked>
+                            checked
+                        >
 
-                        <span>
-                            <strong>Cash on Delivery</strong>
-                            <small>Pay when your order arrives</small>
-                        </span>
+                        Cash on Delivery
 
                     </label>
 
@@ -296,12 +262,10 @@
                         <input
                             type="radio"
                             name="payment"
-                            value="Card">
+                            value="Card"
+                        >
 
-                        <span>
-                            <strong>Credit / Debit Card</strong>
-                            <small>Secure online payment</small>
-                        </span>
+                        Card
 
                     </label>
 
@@ -310,48 +274,69 @@
 
                 <button
                     type="button"
+                    id="placeOrderButton"
                     class="place-order-button"
-                    id="placeOrderButton">
-
+                >
                     PLACE ORDER →
-
                 </button>
 
                 <p
                     id="orderMessage"
-                    class="order-message">
-                </p>
+                    class="order-message"
+                ></p>
 
-            </div>
+            </section>
 
 
-            <!-- RIGHT: ORDER SUMMARY -->
+            <!-- RIGHT SIDE — ORDER SUMMARY -->
             <aside class="order-summary">
 
-                <p class="small-label">// ORDER SUMMARY</p>
+                <h2>YOUR ORDER</h2>
 
-                <div class="summary-product">
 
-                    <div class="summary-camera">
-                        <span>REWIND</span>
-                        <strong>MINI</strong>
-                    </div>
+                <div class="summary-row">
 
-                    <div>
-                        <h3>REWIND Mini</h3>
+                    <span>
+                        REWIND MINI
+                    </span>
 
-                        <p id="summaryColor">
-                            Silver
-                        </p>
-                    </div>
+                    <strong>
+                        $129
+                    </strong>
 
                 </div>
 
 
-                <div class="summary-line">
+                <div class="summary-detail">
 
                     <span>
-                        Camera × <span id="summaryQuantity">1</span>
+                        Color:
+                    </span>
+
+                    <span id="summaryColor">
+                        SILVER
+                    </span>
+
+                </div>
+
+
+                <div class="summary-detail">
+
+                    <span>
+                        Quantity:
+                    </span>
+
+                    <span id="summaryQuantity">
+                        1
+                    </span>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        CAMERA
                     </span>
 
                     <strong id="cameraTotal">
@@ -361,20 +346,27 @@
                 </div>
 
 
-                <div class="summary-accessories">
+                <!-- CHOSEN ACCESSORIES -->
+                <div class="accessory-summary">
 
-                    <p>ACCESSORIES</p>
+                    <h3>
+                        CHOSEN ACCESSORIES
+                    </h3>
 
                     <div id="accessorySummary">
-                        <span>No accessories selected</span>
+                        <span>
+                            No accessories selected
+                        </span>
                     </div>
 
                 </div>
 
 
-                <div class="summary-line">
+                <div class="summary-total">
 
-                    <span>Subtotal</span>
+                    <span>
+                        SUBTOTAL
+                    </span>
 
                     <strong id="subtotal">
                         $129
@@ -383,20 +375,11 @@
                 </div>
 
 
-                <div class="summary-line">
+                <div class="summary-total final-total">
 
-                    <span>Shipping</span>
-
-                    <strong>
-                        FREE
-                    </strong>
-
-                </div>
-
-
-                <div class="summary-total">
-
-                    <span>TOTAL</span>
+                    <span>
+                        TOTAL
+                    </span>
 
                     <strong id="totalPrice">
                         $129
@@ -404,56 +387,11 @@
 
                 </div>
 
-
-                <p class="secure-text">
-                    ✓ Secure checkout &nbsp;&nbsp;
-                    ✓ Free shipping
-                </p>
-
             </aside>
 
-        </section>
+        </div>
 
     </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-
-        <div class="footer-content">
-
-            <div>
-                <h3>◀ REWIND</h3>
-
-                <p>
-                    Pocket-sized digital optics engineered
-                    with turn-of-the-millennium nostalgia.
-                </p>
-            </div>
-
-            <div>
-                <h4>EXPLORE</h4>
-
-                <a href="index.html">Home</a>
-                <a href="product.html">Camera</a>
-                <a href="order.html">Order</a>
-            </div>
-
-            <div>
-                <h4>CAMERA</h4>
-
-                <p>12 MP Sensor</p>
-                <p>1080p Video</p>
-                <p>4× Digital Zoom</p>
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            © 2026 REWIND Digi Corp. All rights reserved.
-        </div>
-
-    </footer>
 
 
     <script src="script.js"></script>
