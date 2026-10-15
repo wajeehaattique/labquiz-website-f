@@ -1005,3 +1005,467 @@ footer {
     }
 
 }
+/* =========================
+   ORDER PAGE
+========================= */
+
+.order-header {
+    max-width: 1200px;
+    margin: auto;
+
+    padding: 75px 30px 45px;
+}
+
+.order-header h1 {
+    font-size: 55px;
+    line-height: 1;
+
+    margin-bottom: 18px;
+}
+
+.order-header > p:last-child {
+    color: #686560;
+
+    max-width: 550px;
+}
+
+
+/* ORDER LAYOUT */
+
+.order-section {
+    max-width: 1200px;
+    margin: auto;
+
+    padding: 30px 30px 100px;
+
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+/* FORM */
+
+.order-form {
+    border-top: 1px solid #aaa7a0;
+}
+
+.order-form h2 {
+    font-size: 20px;
+
+    padding: 28px 0 20px;
+
+    border-bottom: 1px solid #aaa7a0;
+}
+
+.form-heading {
+    margin-top: 35px;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    border: 1px solid #aaa7a0;
+
+    background: #ffffff;
+
+    padding: 14px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #ff3f7f;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* QUANTITY */
+
+.quantity-control {
+    display: flex;
+
+    width: 150px;
+
+    border: 1px solid #aaa7a0;
+}
+
+.quantity-control button {
+    width: 42px;
+
+    border: none;
+
+    background: #dedbd4;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.quantity-control button:hover {
+    background: #ff3f7f;
+    color: white;
+}
+
+.quantity-control input {
+    width: 65px;
+
+    border: none;
+
+    border-left: 1px solid #aaa7a0;
+    border-right: 1px solid #aaa7a0;
+
+    text-align: center;
+
+    padding: 10px;
+}
+
+
+/* ACCESSORIES */
+
+.accessory-list {
+    margin-top: 20px;
+
+    border-top: 1px solid #aaa7a0;
+}
+
+.accessory {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px 5px;
+
+    border-bottom: 1px solid #aaa7a0;
+
+    cursor: pointer;
+}
+
+.accessory input {
+    width: 17px;
+    height: 17px;
+
+    accent-color: #ff3f7f;
+}
+
+.accessory span {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.accessory strong {
+    font-size: 14px;
+}
+
+.accessory small {
+    color: #777;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+}
+
+.accessory b {
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+}
+
+
+/* TWO COLUMN FORM */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* PAYMENT */
+
+.payment-options {
+    margin-top: 20px;
+}
+
+.payment-option {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 18px;
+
+    border: 1px solid #aaa7a0;
+
+    margin-bottom: 10px;
+
+    cursor: pointer;
+}
+
+.payment-option:hover {
+    border-color: #ff3f7f;
+}
+
+.payment-option input {
+    accent-color: #ff3f7f;
+}
+
+.payment-option span {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-option strong {
+    font-size: 14px;
+}
+
+.payment-option small {
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* PLACE ORDER */
+
+.place-order-button {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 18px;
+
+    border: none;
+
+    background: #ff3f7f;
+    color: white;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.place-order-button:hover {
+    background: #181818;
+}
+
+.order-message {
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   ORDER SUMMARY
+========================= */
+
+.order-summary {
+    background: #dedbd4;
+
+    border: 1px solid #aaa7a0;
+
+    padding: 30px;
+
+    position: sticky;
+    top: 100px;
+}
+
+.summary-product {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #aaa7a0;
+}
+
+.summary-camera {
+    width: 75px;
+    height: 65px;
+
+    background: #bcbcbc;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 9px;
+
+    box-shadow: 4px 4px 0 #181818;
+}
+
+.summary-camera strong {
+    font-size: 14px;
+}
+
+.summary-product h3 {
+    font-size: 15px;
+}
+
+.summary-product p {
+    color: #777;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+
+    margin-top: 3px;
+}
+
+
+.summary-line {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 17px 0;
+
+    border-bottom: 1px solid #aaa7a0;
+
+    font-size: 13px;
+}
+
+.summary-line strong {
+    font-family: "Courier New", monospace;
+}
+
+
+.summary-accessories {
+    padding: 18px 0;
+
+    border-bottom: 1px solid #aaa7a0;
+}
+
+.summary-accessories > p {
+    font-family: "Courier New", monospace;
+
+    font-size: 9px;
+
+    color: #777;
+
+    margin-bottom: 10px;
+}
+
+#accessorySummary {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    font-size: 12px;
+}
+
+
+.summary-total {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 25px 0;
+}
+
+.summary-total span {
+    font-family: "Courier New", monospace;
+
+    font-size: 11px;
+}
+
+.summary-total strong {
+    font-size: 27px;
+}
+
+.secure-text {
+    font-family: "Courier New", monospace;
+
+    font-size: 9px;
+
+    color: #777;
+
+    text-align: center;
+}
+
+
+/* ORDER RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    .order-section {
+        grid-template-columns: 1fr;
+    }
+
+    .order-summary {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .order-header h1 {
+        font-size: 40px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+}
