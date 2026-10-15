@@ -3,56 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REWIND — Camera</title>
+
+    <title>REWIND Mini | Camera</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">REWIND<span>®</span></div>
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="navbar">
 
-        <div class="nav-links">
-            <a href="index.html">HOME</a>
-            <a href="product.html" class="active">CAMERA</a>
-            <a href="order.html">ORDER</a>
-        </div>
+            <a href="index.html" class="logo">
+                <span class="logo-mark">◀</span>
+                REWIND
+            </a>
 
-        <a href="order.html" class="nav-button">SHOP NOW →</a>
-    </nav>
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="product.html" class="active">CAMERA</a>
+                <a href="order.html">ORDER</a>
+            </div>
+
+            <a href="order.html" class="shop-button">
+                SHOP NOW
+            </a>
+
+        </nav>
+    </header>
 
 
-    <!-- PRODUCT -->
-    <main class="product-page">
+    <main>
 
+        <!-- PRODUCT SECTION -->
         <section class="product-section">
 
-            <div class="product-image-container">
-                <img
-                    id="productImage"
-                    src="https://images.unsplash.com/photo-1606986628253-5b7c5b1d5b5b?auto=format&fit=crop&w=1000&q=80"
-                    alt="REWIND Retro Digicam"
-                >
+            <!-- LEFT SIDE: CAMERA -->
+            <div class="product-image-area">
+
+                <p class="small-label">// REWIND MINI</p>
+
+                <div class="product-image-box">
+
+                    <div class="product-image-top">
+                        <span>REWIND™</span>
+                        <span class="rec">● REC</span>
+                    </div>
+
+                    <img
+                        id="productImage"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZlaYLySVVqjjSqCt9K0ic7gWaLsDrwAB-UhFH2agOwa-4n1Cmyj-Az_xkdNeUlx43yLtHP1C1vwvFHrZgl-sKHcp7dZAbrRtr5fhEdhLXPcl2sbGlh4lZMG7rmwNSJLqSDeFv2p0svKu_cF-SVv-dXoqrQ1-1_4mtPk6SpeBu7ZXdvmPiS_lB5eSR1bEqDEWVSsQZM2vEBzH_rG9iyF4ZRxJFObPYtF5qlTSToAVigdGMm636EMeX"
+                        alt="REWIND Mini Digital Camera"
+                    >
+
+                    <div class="image-counter">
+                        01 / 03
+                    </div>
+
+                </div>
+
             </div>
 
 
+            <!-- RIGHT SIDE: PRODUCT INFORMATION -->
             <div class="product-info">
 
-                <p class="product-label">REWIND MINI</p>
+                <p class="small-label">// POCKET DIGITAL CAMERA</p>
 
-                <h1>THE CAMERA.</h1>
+                <h1>REWIND Mini</h1>
+
+                <p class="product-price">$129.00</p>
 
                 <p class="product-description">
-                    A tiny digital camera made for imperfect,
-                    beautiful memories.
+                    Small camera. Big nostalgia. The REWIND Mini combines
+                    the unmistakable look of early digital photography
+                    with simple modern-day convenience.
                 </p>
 
-                <h2 class="product-price">$129.00</h2>
 
-
-                <!-- COLOR -->
-                <div class="color-section">
+                <!-- COLOR SELECTOR -->
+                <div class="product-option">
 
                     <p>
                         COLOR:
@@ -64,42 +95,42 @@
                         <button
                             class="color-button silver selected"
                             data-color="SILVER"
-                            aria-label="Silver"
-                        ></button>
+                            aria-label="Silver">
+                        </button>
 
                         <button
                             class="color-button pink"
                             data-color="PINK"
-                            aria-label="Pink"
-                        ></button>
+                            aria-label="Pink">
+                        </button>
 
                         <button
                             class="color-button black"
                             data-color="BLACK"
-                            aria-label="Black"
-                        ></button>
+                            aria-label="Black">
+                        </button>
 
                     </div>
 
                 </div>
 
 
-                <!-- SPECS -->
-                <div class="product-specs">
+                <!-- MAIN FEATURES -->
+                <div class="quick-features">
 
                     <div>
-                        <strong>12 MP</strong>
-                        <span>CCD SENSOR</span>
+                        <span>12 MP</span>
+                        <p>CCD SENSOR</p>
                     </div>
 
                     <div>
-                        <strong>1080p</strong>
-                        <span>VIDEO</span>
+                        <span>1080p</span>
+                        <p>VIDEO</p>
                     </div>
 
                     <div>
-                        <strong>4×</strong>
-                        <span>DIGITAL ZOOM</span>
+                        <span>4×</span>
+                        <p>ZOOM</p>
                     </div>
 
                 </div>
@@ -109,11 +140,187 @@
                     ORDER NOW — $129 →
                 </a>
 
+
+                <p class="shipping-text">
+                    ✓ USB-C charging &nbsp;&nbsp;
+                    ✓ 1-year warranty &nbsp;&nbsp;
+                    ✓ Easy photo transfer
+                </p>
+
             </div>
 
         </section>
 
+
+        <!-- SPECIFICATIONS -->
+        <section class="specifications">
+
+            <div class="section-heading">
+
+                <p class="small-label">// TECH SPECS</p>
+
+                <h2>Small but capable.</h2>
+
+                <p>
+                    Everything you need to capture the moment,
+                    without everything you don't.
+                </p>
+
+            </div>
+
+
+            <div class="spec-grid">
+
+                <div class="spec-row">
+                    <span>IMAGE SENSOR</span>
+                    <strong>12 Megapixel CCD</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>VIDEO</span>
+                    <strong>1080p Full HD</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>ZOOM</span>
+                    <strong>4× Digital Zoom</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>FLASH</span>
+                    <strong>Built-in Direct Flash</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>STORAGE</span>
+                    <strong>microSD up to 128 GB</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>BATTERY</span>
+                    <strong>Rechargeable Lithium Battery</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>CHARGING</span>
+                    <strong>USB-C</strong>
+                </div>
+
+                <div class="spec-row">
+                    <span>COLORS</span>
+                    <strong>Silver / Pink / Black</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHAT'S IN THE BOX -->
+        <section class="box-section">
+
+            <div class="section-heading">
+
+                <p class="small-label">// IN THE BOX</p>
+
+                <h2>Everything you need.</h2>
+
+            </div>
+
+
+            <div class="box-grid">
+
+                <div class="box-item">
+                    <span>01</span>
+                    <h3>REWIND Mini</h3>
+                    <p>Your compact digital camera.</p>
+                </div>
+
+                <div class="box-item">
+                    <span>02</span>
+                    <h3>USB-C Cable</h3>
+                    <p>For charging and transferring files.</p>
+                </div>
+
+                <div class="box-item">
+                    <span>03</span>
+                    <h3>Wrist Strap</h3>
+                    <p>Keep your camera close wherever you go.</p>
+                </div>
+
+                <div class="box-item">
+                    <span>04</span>
+                    <h3>Quick Guide</h3>
+                    <p>Because nobody reads a giant manual.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM CTA -->
+        <section class="cta">
+
+            <div>
+
+                <p class="small-label">● READY TO SHOOT?</p>
+
+                <h2>Your camera roll is waiting.</h2>
+
+                <p>
+                    Choose your REWIND Mini and start capturing
+                    the moments worth keeping.
+                </p>
+
+            </div>
+
+            <a href="order.html" class="primary-button">
+                ORDER REWIND MINI →
+            </a>
+
+        </section>
+
     </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h3>◀ REWIND</h3>
+
+                <p>
+                    Pocket-sized digital optics engineered
+                    with turn-of-the-millennium nostalgia.
+                </p>
+            </div>
+
+            <div>
+                <h4>EXPLORE</h4>
+
+                <a href="index.html">Home</a>
+                <a href="product.html">Camera</a>
+                <a href="order.html">Order</a>
+            </div>
+
+            <div>
+                <h4>CAMERA</h4>
+
+                <p>12 MP Sensor</p>
+                <p>1080p Video</p>
+                <p>4× Digital Zoom</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 REWIND Digi Corp. All rights reserved.
+        </div>
+
+    </footer>
 
 
     <script src="script.js"></script>
