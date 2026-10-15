@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("selectedColor");
 
 
-if (colorButtons.length > 0 && !localStorage.getItem("selectedColor")) {
-    localStorage.setItem("selectedColor", "SILVER");
-}
-
     colorButtons.forEach(function (button) {
 
         button.addEventListener("click", function () {
