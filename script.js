@@ -21,27 +21,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener("click", function () {
 
-            // Remove selected from all buttons
             colorButtons.forEach(function (btn) {
                 btn.classList.remove("selected");
             });
 
-            // Select clicked color
             button.classList.add("selected");
 
-
-            // Get selected color
             const color =
                 button.dataset.color;
 
-
-            // Show selected color
             if (selectedColor) {
                 selectedColor.textContent = color;
             }
 
-
-            // SAVE COLOR
+            // Save selected color
             localStorage.setItem(
                 "selectedColor",
                 color
@@ -99,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
             parseInt(quantityInput.value);
 
 
-        // Keep quantity between 1 and 5
         if (isNaN(quantity)) {
             quantity = 1;
         }
@@ -305,7 +297,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // Clear old list
         accessorySummary.innerHTML = "";
 
 
@@ -336,7 +327,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        // Nothing selected
         if (selectedAccessories === 0) {
 
             const emptyMessage =
@@ -359,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================
        ORDER COLOR
-       CARRY PRODUCT COLOR OVER
+       CARRY CAMERA COLOR OVER
     ========================= */
 
     const orderColor =
@@ -371,15 +361,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (orderColor) {
 
-        // Get color chosen on product page
+        // Get color saved from camera page
         const savedColor =
             localStorage.getItem("selectedColor");
 
 
         if (savedColor) {
 
-            orderColor.value =
-                savedColor;
+            // Find matching option by its text
+            for (
+                let i = 0;
+                i < orderColor.options.length;
+                i++
+            ) {
+
+                if (
+                    orderColor.options[i]
+                        .textContent
+                        .trim()
+                        .toUpperCase() ===
+                    savedColor.toUpperCase()
+                ) {
+
+                    orderColor.selectedIndex = i;
+
+                    break;
+
+                }
+
+            }
 
 
             if (summaryColor) {
@@ -389,25 +399,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
+        } else {
+
+            // Default to first color
+            orderColor.selectedIndex = 0;
+
+
+            if (summaryColor) {
+
+                summaryColor.textContent =
+                    orderColor.options[0]
+                        .textContent
+                        .trim()
+                        .toUpperCase();
+
+            }
+
         }
 
 
-        // If color is changed on order page
+        // If user changes color on order page
         orderColor.addEventListener(
             "change",
             function () {
 
+                const newColor =
+                    orderColor.options[
+                        orderColor.selectedIndex
+                    ]
+                        .textContent
+                        .trim()
+                        .toUpperCase();
+
+
                 if (summaryColor) {
 
                     summaryColor.textContent =
-                        orderColor.value;
+                        newColor;
 
                 }
 
 
                 localStorage.setItem(
                     "selectedColor",
-                    orderColor.value
+                    newColor
                 );
 
             }
@@ -482,10 +517,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     orderMessage.textContent =
                         "Please complete all required fields.";
 
-
                     orderMessage.style.color =
                         "#ff3f7f";
-
 
                     return;
 
@@ -504,10 +537,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     orderMessage.textContent =
                         "Please enter a valid email address.";
 
-
                     orderMessage.style.color =
                         "#ff3f7f";
-
 
                     return;
 
