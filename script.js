@@ -4,8 +4,21 @@ document.addEventListener("DOMContentLoaded", function () {
        PRODUCT PAGE - COLORS
     ========================= */
 
+<<<<<<< Updated upstream
     const colorButtons = document.querySelectorAll(".color-button");
     const selectedColor = document.getElementById("selectedColor");
+=======
+    const colorButtons =
+        document.querySelectorAll(".color-button");
+
+    const selectedColor =
+        document.getElementById("selectedColor");
+
+    if (colorButtons.length > 0 && !localStorage.getItem("selectedColor")) {
+        localStorage.setItem("selectedColor", "SILVER");
+}
+
+>>>>>>> Stashed changes
 
     colorButtons.forEach(function (button) {
 
