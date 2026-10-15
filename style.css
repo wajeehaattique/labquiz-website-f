@@ -654,3 +654,354 @@ footer {
         font-size: 34px;
     }
 }
+/* =========================
+   PRODUCT PAGE
+========================= */
+
+.product-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 30px;
+
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+/* PRODUCT IMAGE */
+
+.product-image-box {
+    background-color: #dedbd4;
+    border: 1px solid #aaa7a0;
+
+    padding: 20px;
+
+    position: relative;
+
+    box-shadow: 10px 10px 0 #181818;
+}
+
+.product-image-box img {
+    width: 100%;
+    height: 470px;
+
+    object-fit: cover;
+    display: block;
+}
+
+.product-image-top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+}
+
+.image-counter {
+    position: absolute;
+
+    bottom: 35px;
+    right: 35px;
+
+    background: #181818;
+    color: white;
+
+    padding: 5px 9px;
+
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+}
+
+
+/* PRODUCT INFO */
+
+.product-info h1 {
+    font-size: 58px;
+
+    line-height: 1;
+
+    margin-bottom: 15px;
+}
+
+.product-price {
+    font-family: "Courier New", monospace;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    margin-bottom: 25px;
+}
+
+.product-description {
+    color: #686560;
+
+    max-width: 480px;
+
+    margin-bottom: 35px;
+}
+
+
+/* COLOR OPTIONS */
+
+.product-option {
+    border-top: 1px solid #aaa7a0;
+    border-bottom: 1px solid #aaa7a0;
+
+    padding: 22px 0;
+
+    margin-bottom: 30px;
+}
+
+.product-option > p {
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+
+    margin-bottom: 15px;
+}
+
+.color-options {
+    display: flex;
+    gap: 12px;
+}
+
+.color-button {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    border: 2px solid transparent;
+
+    cursor: pointer;
+
+    outline: 2px solid transparent;
+    outline-offset: 3px;
+}
+
+.color-button.silver {
+    background: #bcbcbc;
+}
+
+.color-button.pink {
+    background: #ff82a9;
+}
+
+.color-button.black {
+    background: #202020;
+}
+
+.color-button.selected {
+    outline-color: #181818;
+}
+
+
+/* QUICK FEATURES */
+
+.quick-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-bottom: 30px;
+
+    border: 1px solid #aaa7a0;
+}
+
+.quick-features div {
+    padding: 18px;
+
+    text-align: center;
+
+    border-right: 1px solid #aaa7a0;
+}
+
+.quick-features div:last-child {
+    border-right: none;
+}
+
+.quick-features span {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.quick-features p {
+    font-family: "Courier New", monospace;
+
+    font-size: 9px;
+
+    color: #777;
+
+    margin-top: 4px;
+}
+
+
+/* ORDER BUTTON */
+
+.product-order-button {
+    display: block;
+
+    background: #ff3f7f;
+    color: white;
+
+    text-align: center;
+
+    padding: 17px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    transition: 0.2s;
+}
+
+.product-order-button:hover {
+    background: #181818;
+}
+
+.shipping-text {
+    font-family: "Courier New", monospace;
+
+    font-size: 9px;
+
+    text-align: center;
+
+    color: #777;
+
+    margin-top: 13px;
+}
+
+
+/* =========================
+   SPECIFICATIONS
+========================= */
+
+.specifications {
+    background: #181818;
+    color: white;
+
+    padding: 90px max(30px, calc((100% - 1140px) / 2));
+}
+
+.specifications .section-heading > p:last-child {
+    color: #aaa;
+}
+
+.spec-grid {
+    border-top: 1px solid #555;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 20px 5px;
+
+    border-bottom: 1px solid #555;
+}
+
+.spec-row span {
+    font-family: "Courier New", monospace;
+
+    color: #999;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+.spec-row strong {
+    font-size: 14px;
+}
+
+
+/* =========================
+   IN THE BOX
+========================= */
+
+.box-section {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 90px 30px;
+}
+
+.box-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid #aaa7a0;
+    border-left: 1px solid #aaa7a0;
+}
+
+.box-item {
+    min-height: 200px;
+
+    padding: 25px;
+
+    border-right: 1px solid #aaa7a0;
+    border-bottom: 1px solid #aaa7a0;
+}
+
+.box-item > span {
+    font-family: "Courier New", monospace;
+
+    color: #ff3f7f;
+
+    font-size: 11px;
+}
+
+.box-item h3 {
+    margin-top: 50px;
+    margin-bottom: 7px;
+}
+
+.box-item p {
+    color: #686560;
+
+    font-size: 13px;
+}
+
+
+/* PRODUCT PAGE RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    .product-section {
+        grid-template-columns: 1fr;
+    }
+
+    .product-info h1 {
+        font-size: 45px;
+    }
+
+    .box-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .product-image-box img {
+        height: 300px;
+    }
+
+    .box-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .spec-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
