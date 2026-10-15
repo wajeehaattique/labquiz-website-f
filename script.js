@@ -581,4 +581,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateOrderSummary();
 
-});
+});yy
