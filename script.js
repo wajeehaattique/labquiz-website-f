@@ -1,87 +1,56 @@
+/* =========================
+   REWIND DIGICAM - SCRIPT
+========================= */
+
 document.addEventListener("DOMContentLoaded", function () {
 
+
     /* =========================
-       PRODUCT PAGE - COLORS
+       PRODUCT PAGE
+       COLOR SELECTION
     ========================= */
 
-    const colorButtons = document.querySelectorAll(".color-button");
-    const selectedColor = document.getElementById("selectedColor");
+    const colorButtons =
+        document.querySelectorAll(".color-button");
+
+    const selectedColor =
+        document.getElementById("selectedColor");
+
 
     colorButtons.forEach(function (button) {
 
         button.addEventListener("click", function () {
 
+            // Remove selected from all buttons
             colorButtons.forEach(function (btn) {
                 btn.classList.remove("selected");
             });
 
+            // Select clicked color
             button.classList.add("selected");
 
-            const color = button.dataset.color;
 
+            // Get selected color
+            const color =
+                button.dataset.color;
+
+
+            // Show selected color
             if (selectedColor) {
                 selectedColor.textContent = color;
             }
 
-            // Save selected color
-            localStorage.setItem("selectedColor", color);
+
+            // SAVE COLOR
+            localStorage.setItem(
+                "selectedColor",
+                color
+            );
 
         });
 
     });
 
-
-    /* =========================
-       ORDER PAGE
-       GET SAVED COLOR
-    ========================= */
-
-    const orderColor =
-        document.getElementById("orderColor");
-
-    const summaryColor =
-        document.getElementById("summaryColor");
-
-    if (orderColor) {
-
-        const savedColor =
-            localStorage.getItem("selectedColor");
-
-        if (savedColor) {
-
-            orderColor.value =
-                savedColor;
-
-            if (summaryColor) {
-                summaryColor.textContent =
-                    savedColor;
-            }
-
-        }
-
-
-        // If user changes color on order page
-        orderColor.addEventListener(
-            "change",
-            function () {
-
-                const newColor =
-                    orderColor.value;
-
-                if (summaryColor) {
-                    summaryColor.textContent =
-                        newColor;
-                }
-
-                localStorage.setItem(
-                    "selectedColor",
-                    newColor
-                );
-
-            }
-        );
-
-    }
 
 
     /* =========================
@@ -110,21 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPrice =
         document.getElementById("totalPrice");
 
-    const accessorySummary =
-        document.getElementById("accessorySummary");
-
-    const accessoryChecks =
-        document.querySelectorAll(".accessory-check");
-
 
     const cameraPrice = 129;
 
 
+
     /* =========================
-       UPDATE ORDER
+       UPDATE ORDER SUMMARY
     ========================= */
 
-    function updateOrder() {
+    function updateOrderSummary() {
 
         if (!quantityInput) {
             return;
@@ -135,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
             parseInt(quantityInput.value);
 
 
+        // Keep quantity between 1 and 5
         if (isNaN(quantity)) {
             quantity = 1;
         }
@@ -151,9 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
         quantityInput.value = quantity;
 
 
-        /* CAMERA TOTAL */
-
-        const cameraCost =
+        // Camera total
+        const cameraTotalPrice =
             cameraPrice * quantity;
 
 
@@ -165,83 +129,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (cameraTotal) {
             cameraTotal.textContent =
-                "$" + cameraCost;
+                "$" + cameraTotalPrice;
         }
 
 
-        /* ACCESSORIES */
 
-        let accessoryCost = 0;
+        /* =========================
+           ACCESSORIES
+        ========================= */
 
-        let selectedAccessories = [];
+        let accessoryTotal = 0;
+
+
+        const accessoryChecks =
+            document.querySelectorAll(".accessory-check");
 
 
         accessoryChecks.forEach(function (checkbox) {
 
             if (checkbox.checked) {
 
-                const price =
+                accessoryTotal +=
                     Number(checkbox.dataset.price);
-
-                const name =
-                    checkbox.dataset.name;
-
-                accessoryCost += price;
-
-                selectedAccessories.push({
-                    name: name,
-                    price: price
-                });
 
             }
 
         });
 
 
-        /* CHOSEN ACCESSORIES */
 
-        if (accessorySummary) {
-
-            accessorySummary.innerHTML = "";
-
-
-            if (selectedAccessories.length === 0) {
-
-                const empty =
-                    document.createElement("span");
-
-                empty.textContent =
-                    "No accessories selected";
-
-                accessorySummary.appendChild(empty);
-
-            } else {
-
-                selectedAccessories.forEach(
-                    function (accessory) {
-
-                        const item =
-                            document.createElement("span");
-
-                        item.textContent =
-                            accessory.name +
-                            " +$" +
-                            accessory.price;
-
-                        accessorySummary.appendChild(item);
-
-                    }
-                );
-
-            }
-
-        }
-
-
-        /* FINAL TOTAL */
+        /* =========================
+           FINAL TOTAL
+        ========================= */
 
         const finalTotal =
-            cameraCost + accessoryCost;
+            cameraTotalPrice + accessoryTotal;
 
 
         if (subtotal) {
@@ -255,7 +177,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 "$" + finalTotal;
         }
 
+
+        updateAccessorySummary();
+
     }
+
 
 
     /* =========================
@@ -271,6 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let quantity =
                     parseInt(quantityInput.value);
 
+
                 if (quantity > 1) {
 
                     quantity--;
@@ -278,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     quantityInput.value =
                         quantity;
 
-                    updateOrder();
+                    updateOrderSummary();
 
                 }
 
@@ -286,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
+
 
 
     /* =========================
@@ -301,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let quantity =
                     parseInt(quantityInput.value);
 
+
                 if (quantity < 5) {
 
                     quantity++;
@@ -308,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     quantityInput.value =
                         quantity;
 
-                    updateOrder();
+                    updateOrderSummary();
 
                 }
 
@@ -316,6 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
     }
+
 
 
     /* =========================
@@ -327,29 +257,164 @@ document.addEventListener("DOMContentLoaded", function () {
         quantityInput.addEventListener(
             "input",
             function () {
-                updateOrder();
+
+                updateOrderSummary();
+
             }
         );
 
     }
 
 
+
     /* =========================
        ACCESSORIES
     ========================= */
 
-    accessoryChecks.forEach(
-        function (checkbox) {
+    const accessoryChecks =
+        document.querySelectorAll(".accessory-check");
 
-            checkbox.addEventListener(
-                "change",
-                function () {
-                    updateOrder();
-                }
+
+    accessoryChecks.forEach(function (checkbox) {
+
+        checkbox.addEventListener(
+            "change",
+            function () {
+
+                updateOrderSummary();
+
+            }
+        );
+
+    });
+
+
+
+    /* =========================
+       CHOSEN ACCESSORIES
+    ========================= */
+
+    function updateAccessorySummary() {
+
+        const accessorySummary =
+            document.getElementById("accessorySummary");
+
+
+        if (!accessorySummary) {
+            return;
+        }
+
+
+        // Clear old list
+        accessorySummary.innerHTML = "";
+
+
+        let selectedAccessories = 0;
+
+
+        accessoryChecks.forEach(function (checkbox) {
+
+            if (checkbox.checked) {
+
+                selectedAccessories++;
+
+
+                const item =
+                    document.createElement("span");
+
+
+                item.textContent =
+                    checkbox.dataset.name +
+                    " +$" +
+                    checkbox.dataset.price;
+
+
+                accessorySummary.appendChild(item);
+
+            }
+
+        });
+
+
+        // Nothing selected
+        if (selectedAccessories === 0) {
+
+            const emptyMessage =
+                document.createElement("span");
+
+
+            emptyMessage.textContent =
+                "No accessories selected";
+
+
+            accessorySummary.appendChild(
+                emptyMessage
             );
 
         }
-    );
+
+    }
+
+
+
+    /* =========================
+       ORDER COLOR
+       CARRY PRODUCT COLOR OVER
+    ========================= */
+
+    const orderColor =
+        document.getElementById("orderColor");
+
+    const summaryColor =
+        document.getElementById("summaryColor");
+
+
+    if (orderColor) {
+
+        // Get color chosen on product page
+        const savedColor =
+            localStorage.getItem("selectedColor");
+
+
+        if (savedColor) {
+
+            orderColor.value =
+                savedColor;
+
+
+            if (summaryColor) {
+
+                summaryColor.textContent =
+                    savedColor;
+
+            }
+
+        }
+
+
+        // If color is changed on order page
+        orderColor.addEventListener(
+            "change",
+            function () {
+
+                if (summaryColor) {
+
+                    summaryColor.textContent =
+                        orderColor.value;
+
+                }
+
+
+                localStorage.setItem(
+                    "selectedColor",
+                    orderColor.value
+                );
+
+            }
+        );
+
+    }
+
 
 
     /* =========================
@@ -378,26 +443,33 @@ document.addEventListener("DOMContentLoaded", function () {
                         "fullName"
                     ).value.trim();
 
+
                 const email =
                     document.getElementById(
                         "email"
                     ).value.trim();
+
 
                 const phone =
                     document.getElementById(
                         "phone"
                     ).value.trim();
 
+
                 const city =
                     document.getElementById(
                         "city"
                     ).value.trim();
+
 
                 const address =
                     document.getElementById(
                         "address"
                     ).value.trim();
 
+
+
+                /* BASIC VALIDATION */
 
                 if (
                     fullName === "" ||
@@ -410,13 +482,18 @@ document.addEventListener("DOMContentLoaded", function () {
                     orderMessage.textContent =
                         "Please complete all required fields.";
 
+
                     orderMessage.style.color =
                         "#ff3f7f";
+
 
                     return;
 
                 }
 
+
+
+                /* EMAIL VALIDATION */
 
                 const emailPattern =
                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -427,17 +504,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     orderMessage.textContent =
                         "Please enter a valid email address.";
 
+
                     orderMessage.style.color =
                         "#ff3f7f";
+
 
                     return;
 
                 }
 
 
+
+                /* SUCCESS */
+
                 orderMessage.textContent =
                     "✓ Order placed successfully! Thank you, " +
                     fullName + ".";
+
 
                 orderMessage.style.color =
                     "#181818";
@@ -446,8 +529,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 placeOrderButton.textContent =
                     "ORDER PLACED ✓";
 
+
                 placeOrderButton.style.backgroundColor =
                     "#181818";
+
 
                 placeOrderButton.disabled =
                     true;
@@ -458,10 +543,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+
     /* =========================
-       STARTING VALUES
+       INITIAL ORDER SUMMARY
     ========================= */
 
-    updateOrder();
+    updateOrderSummary();
 
 });
