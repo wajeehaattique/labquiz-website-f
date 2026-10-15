@@ -464,4 +464,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateOrder();
 
-});;
+});
