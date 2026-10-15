@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>REWIND | Order</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                <span class="logo-mark">◀</span>
+                REWIND
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">HOME</a>
+                <a href="product.html">CAMERA</a>
+                <a href="order.html" class="active">ORDER</a>
+            </div>
+
+            <a href="order.html" class="shop-button">
+                SHOP NOW
+            </a>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- ORDER PAGE INTRO -->
+        <section class="order-header">
+
+            <p class="small-label">// CHECKOUT</p>
+
+            <h1>Get your REWIND.</h1>
+
+            <p>
+                Choose your camera, add your accessories,
+                and tell us where to send it.
+            </p>
+
+        </section>
+
+
+        <!-- ORDER CONTENT -->
+        <section class="order-section">
+
+            <!-- LEFT: FORM -->
+            <div class="order-form">
+
+                <h2>01 — Camera</h2>
+
+
+                <!-- COLOR -->
+                <div class="form-group">
+
+                    <label for="orderColor">
+                        CAMERA COLOR
+                    </label>
+
+                    <select id="orderColor">
+
+                        <option value="Silver">
+                            Silver
+                        </option>
+
+                        <option value="Pink">
+                            Pink
+                        </option>
+
+                        <option value="Black">
+                            Black
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- QUANTITY -->
+                <div class="form-group">
+
+                    <label for="quantity">
+                        QUANTITY
+                    </label>
+
+                    <div class="quantity-control">
+
+                        <button
+                            type="button"
+                            id="minusButton">
+                            −
+                        </button>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            value="1"
+                            min="1"
+                            max="5">
+
+                        <button
+                            type="button"
+                            id="plusButton">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACCESSORIES -->
+                <h2 class="form-heading">
+                    02 — Accessories
+                </h2>
+
+
+                <div class="accessory-list">
+
+                    <label class="accessory">
+
+                        <input
+                            type="checkbox"
+                            class="accessory-check"
+                            data-price="15"
+                            data-name="Camera Pouch">
+
+                        <span>
+                            <strong>Camera Pouch</strong>
+                            <small>Protective soft pouch</small>
+                        </span>
+
+                        <b>+$15</b>
+
+                    </label>
+
+
+                    <label class="accessory">
+
+                        <input
+                            type="checkbox"
+                            class="accessory-check"
+                            data-price="10"
+                            data-name="Wrist Strap">
+
+                        <span>
+                            <strong>Extra Wrist Strap</strong>
+                            <small>Additional adjustable strap</small>
+                        </span>
+
+                        <b>+$10</b>
+
+                    </label>
+
+
+                    <label class="accessory">
+
+                        <input
+                            type="checkbox"
+                            class="accessory-check"
+                            data-price="20"
+                            data-name="128GB microSD Card">
+
+                        <span>
+                            <strong>128GB microSD Card</strong>
+                            <small>Extra storage for your photos</small>
+                        </span>
+
+                        <b>+$20</b>
+
+                    </label>
+
+                </div>
+
+
+                <!-- CUSTOMER INFORMATION -->
+                <h2 class="form-heading">
+                    03 — Your Information
+                </h2>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            FULL NAME
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="Your name">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            EMAIL
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="you@example.com">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            PHONE
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="+92 300 0000000">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            CITY
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="Your city">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        DELIVERY ADDRESS
+                    </label>
+
+                    <textarea
+                        id="address"
+                        rows="4"
+                        placeholder="Enter your complete delivery address"></textarea>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+                <h2 class="form-heading">
+                    04 — Payment
+                </h2>
+
+
+                <div class="payment-options">
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked>
+
+                        <span>
+                            <strong>Cash on Delivery</strong>
+                            <small>Pay when your order arrives</small>
+                        </span>
+
+                    </label>
+
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Card">
+
+                        <span>
+                            <strong>Credit / Debit Card</strong>
+                            <small>Secure online payment</small>
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="place-order-button"
+                    id="placeOrderButton">
+
+                    PLACE ORDER →
+
+                </button>
+
+                <p
+                    id="orderMessage"
+                    class="order-message">
+                </p>
+
+            </div>
+
+
+            <!-- RIGHT: ORDER SUMMARY -->
+            <aside class="order-summary">
+
+                <p class="small-label">// ORDER SUMMARY</p>
+
+                <div class="summary-product">
+
+                    <div class="summary-camera">
+                        <span>REWIND</span>
+                        <strong>MINI</strong>
+                    </div>
+
+                    <div>
+                        <h3>REWIND Mini</h3>
+
+                        <p id="summaryColor">
+                            Silver
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>
+                        Camera × <span id="summaryQuantity">1</span>
+                    </span>
+
+                    <strong id="cameraTotal">
+                        $129
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-accessories">
+
+                    <p>ACCESSORIES</p>
+
+                    <div id="accessorySummary">
+                        <span>No accessories selected</span>
+                    </div>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Subtotal</span>
+
+                    <strong id="subtotal">
+                        $129
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Shipping</span>
+
+                    <strong>
+                        FREE
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>TOTAL</span>
+
+                    <strong id="totalPrice">
+                        $129
+                    </strong>
+
+                </div>
+
+
+                <p class="secure-text">
+                    ✓ Secure checkout &nbsp;&nbsp;
+                    ✓ Free shipping
+                </p>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h3>◀ REWIND</h3>
+
+                <p>
+                    Pocket-sized digital optics engineered
+                    with turn-of-the-millennium nostalgia.
+                </p>
+            </div>
+
+            <div>
+                <h4>EXPLORE</h4>
+
+                <a href="index.html">Home</a>
+                <a href="product.html">Camera</a>
+                <a href="order.html">Order</a>
+            </div>
+
+            <div>
+                <h4>CAMERA</h4>
+
+                <p>12 MP Sensor</p>
+                <p>1080p Video</p>
+                <p>4× Digital Zoom</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 REWIND Digi Corp. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
