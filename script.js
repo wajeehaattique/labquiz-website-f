@@ -1,13 +1,7 @@
-```javascript
-/* =========================
-   REWIND DIGICAM - SCRIPT
-========================= */
-
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================
-       PRODUCT PAGE
-       COLOR SELECTION
+       PRODUCT PAGE - COLORS
     ========================= */
 
     const colorButtons = document.querySelectorAll(".color-button");
@@ -17,18 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         button.addEventListener("click", function () {
 
-            // Remove selected state from all buttons
             colorButtons.forEach(function (btn) {
                 btn.classList.remove("selected");
             });
 
-            // Select clicked button
             button.classList.add("selected");
 
-            // Update displayed color
+            const color = button.dataset.color;
+
             if (selectedColor) {
-                selectedColor.textContent = button.dataset.color;
+                selectedColor.textContent = color;
             }
+
+            // Save selected color
+            localStorage.setItem("selectedColor", color);
 
         });
 
@@ -37,32 +33,108 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================
        ORDER PAGE
+       GET SAVED COLOR
+    ========================= */
+
+    const orderColor =
+        document.getElementById("orderColor");
+
+    const summaryColor =
+        document.getElementById("summaryColor");
+
+    if (orderColor) {
+
+        const savedColor =
+            localStorage.getItem("selectedColor");
+
+        if (savedColor) {
+
+            orderColor.value =
+                savedColor;
+
+            if (summaryColor) {
+                summaryColor.textContent =
+                    savedColor;
+            }
+
+        }
+
+
+        // If user changes color on order page
+        orderColor.addEventListener(
+            "change",
+            function () {
+
+                const newColor =
+                    orderColor.value;
+
+                if (summaryColor) {
+                    summaryColor.textContent =
+                        newColor;
+                }
+
+                localStorage.setItem(
+                    "selectedColor",
+                    newColor
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       ORDER PAGE
        QUANTITY
     ========================= */
 
-    const quantityInput = document.getElementById("quantity");
-    const minusButton = document.getElementById("minusButton");
-    const plusButton = document.getElementById("plusButton");
+    const quantityInput =
+        document.getElementById("quantity");
 
-    const summaryQuantity = document.getElementById("summaryQuantity");
-    const cameraTotal = document.getElementById("cameraTotal");
-    const subtotal = document.getElementById("subtotal");
-    const totalPrice = document.getElementById("totalPrice");
+    const minusButton =
+        document.getElementById("minusButton");
+
+    const plusButton =
+        document.getElementById("plusButton");
+
+    const summaryQuantity =
+        document.getElementById("summaryQuantity");
+
+    const cameraTotal =
+        document.getElementById("cameraTotal");
+
+    const subtotal =
+        document.getElementById("subtotal");
+
+    const totalPrice =
+        document.getElementById("totalPrice");
+
+    const accessorySummary =
+        document.getElementById("accessorySummary");
+
+    const accessoryChecks =
+        document.querySelectorAll(".accessory-check");
 
 
     const cameraPrice = 129;
 
 
-    // Update all prices and quantity
-    function updateOrderSummary() {
+    /* =========================
+       UPDATE ORDER
+    ========================= */
+
+    function updateOrder() {
 
         if (!quantityInput) {
             return;
         }
 
-        let quantity = parseInt(quantityInput.value);
 
-        // Make sure quantity stays between 1 and 5
+        let quantity =
+            parseInt(quantityInput.value);
+
+
         if (isNaN(quantity)) {
             quantity = 1;
         }
@@ -75,55 +147,113 @@ document.addEventListener("DOMContentLoaded", function () {
             quantity = 5;
         }
 
+
         quantityInput.value = quantity;
 
 
-        // Camera total
-        const cameraTotalPrice = cameraPrice * quantity;
+        /* CAMERA TOTAL */
+
+        const cameraCost =
+            cameraPrice * quantity;
 
 
         if (summaryQuantity) {
-            summaryQuantity.textContent = quantity;
+            summaryQuantity.textContent =
+                quantity;
         }
+
 
         if (cameraTotal) {
-            cameraTotal.textContent = "$" + cameraTotalPrice;
+            cameraTotal.textContent =
+                "$" + cameraCost;
         }
 
 
-        // Calculate accessories
-        let accessoryTotal = 0;
+        /* ACCESSORIES */
 
-        const accessoryChecks =
-            document.querySelectorAll(".accessory-check");
+        let accessoryCost = 0;
+
+        let selectedAccessories = [];
+
 
         accessoryChecks.forEach(function (checkbox) {
 
             if (checkbox.checked) {
 
-                accessoryTotal +=
+                const price =
                     Number(checkbox.dataset.price);
+
+                const name =
+                    checkbox.dataset.name;
+
+                accessoryCost += price;
+
+                selectedAccessories.push({
+                    name: name,
+                    price: price
+                });
 
             }
 
         });
 
 
-        // Final total
+        /* CHOSEN ACCESSORIES */
+
+        if (accessorySummary) {
+
+            accessorySummary.innerHTML = "";
+
+
+            if (selectedAccessories.length === 0) {
+
+                const empty =
+                    document.createElement("span");
+
+                empty.textContent =
+                    "No accessories selected";
+
+                accessorySummary.appendChild(empty);
+
+            } else {
+
+                selectedAccessories.forEach(
+                    function (accessory) {
+
+                        const item =
+                            document.createElement("span");
+
+                        item.textContent =
+                            accessory.name +
+                            " +$" +
+                            accessory.price;
+
+                        accessorySummary.appendChild(item);
+
+                    }
+                );
+
+            }
+
+        }
+
+
+        /* FINAL TOTAL */
+
         const finalTotal =
-            cameraTotalPrice + accessoryTotal;
+            cameraCost + accessoryCost;
 
 
         if (subtotal) {
-            subtotal.textContent = "$" + finalTotal;
+            subtotal.textContent =
+                "$" + finalTotal;
         }
+
 
         if (totalPrice) {
-            totalPrice.textContent = "$" + finalTotal;
+            totalPrice.textContent =
+                "$" + finalTotal;
         }
-
-
-        updateAccessorySummary();
 
     }
 
@@ -134,20 +264,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (minusButton) {
 
-        minusButton.addEventListener("click", function () {
+        minusButton.addEventListener(
+            "click",
+            function () {
 
-            let quantity =
-                parseInt(quantityInput.value);
+                let quantity =
+                    parseInt(quantityInput.value);
 
-            if (quantity > 1) {
-                quantity--;
+                if (quantity > 1) {
 
-                quantityInput.value = quantity;
+                    quantity--;
 
-                updateOrderSummary();
+                    quantityInput.value =
+                        quantity;
+
+                    updateOrder();
+
+                }
+
             }
-
-        });
+        );
 
     }
 
@@ -158,33 +294,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (plusButton) {
 
-        plusButton.addEventListener("click", function () {
+        plusButton.addEventListener(
+            "click",
+            function () {
 
-            let quantity =
-                parseInt(quantityInput.value);
+                let quantity =
+                    parseInt(quantityInput.value);
 
-            if (quantity < 5) {
-                quantity++;
+                if (quantity < 5) {
 
-                quantityInput.value = quantity;
+                    quantity++;
 
-                updateOrderSummary();
+                    quantityInput.value =
+                        quantity;
+
+                    updateOrder();
+
+                }
+
             }
-
-        });
+        );
 
     }
 
 
     /* =========================
-       MANUAL QUANTITY INPUT
+       MANUAL QUANTITY
     ========================= */
 
     if (quantityInput) {
 
-        quantityInput.addEventListener("input", function () {
-            updateOrderSummary();
-        });
+        quantityInput.addEventListener(
+            "input",
+            function () {
+                updateOrder();
+            }
+        );
 
     }
 
@@ -193,105 +338,18 @@ document.addEventListener("DOMContentLoaded", function () {
        ACCESSORIES
     ========================= */
 
-    const accessoryChecks =
-        document.querySelectorAll(".accessory-check");
+    accessoryChecks.forEach(
+        function (checkbox) {
 
-
-    accessoryChecks.forEach(function (checkbox) {
-
-        checkbox.addEventListener("change", function () {
-
-            updateOrderSummary();
-
-        });
-
-    });
-
-
-    /* =========================
-       ACCESSORY SUMMARY
-    ========================= */
-
-    function updateAccessorySummary() {
-
-        const accessorySummary =
-            document.getElementById("accessorySummary");
-
-        if (!accessorySummary) {
-            return;
-        }
-
-
-        accessorySummary.innerHTML = "";
-
-
-        let selectedAccessories = 0;
-
-
-        accessoryChecks.forEach(function (checkbox) {
-
-            if (checkbox.checked) {
-
-                selectedAccessories++;
-
-
-                const item =
-                    document.createElement("span");
-
-                item.textContent =
-                    checkbox.dataset.name +
-                    " +$" +
-                    checkbox.dataset.price;
-
-
-                accessorySummary.appendChild(item);
-
-            }
-
-        });
-
-
-        // If nothing is selected
-        if (selectedAccessories === 0) {
-
-            const emptyMessage =
-                document.createElement("span");
-
-            emptyMessage.textContent =
-                "No accessories selected";
-
-            accessorySummary.appendChild(emptyMessage);
+            checkbox.addEventListener(
+                "change",
+                function () {
+                    updateOrder();
+                }
+            );
 
         }
-
-    }
-
-
-    /* =========================
-       ORDER COLOR
-    ========================= */
-
-    const orderColor =
-        document.getElementById("orderColor");
-
-    const summaryColor =
-        document.getElementById("summaryColor");
-
-
-    if (orderColor) {
-
-        orderColor.addEventListener("change", function () {
-
-            if (summaryColor) {
-
-                summaryColor.textContent =
-                    orderColor.value;
-
-            }
-
-        });
-
-    }
+    );
 
 
     /* =========================
@@ -299,109 +357,111 @@ document.addEventListener("DOMContentLoaded", function () {
     ========================= */
 
     const placeOrderButton =
-        document.getElementById("placeOrderButton");
+        document.getElementById(
+            "placeOrderButton"
+        );
 
     const orderMessage =
-        document.getElementById("orderMessage");
+        document.getElementById(
+            "orderMessage"
+        );
 
 
     if (placeOrderButton) {
 
-        placeOrderButton.addEventListener("click", function () {
+        placeOrderButton.addEventListener(
+            "click",
+            function () {
 
-            const fullName =
-                document.getElementById("fullName").value.trim();
+                const fullName =
+                    document.getElementById(
+                        "fullName"
+                    ).value.trim();
 
-            const email =
-                document.getElementById("email").value.trim();
+                const email =
+                    document.getElementById(
+                        "email"
+                    ).value.trim();
 
-            const phone =
-                document.getElementById("phone").value.trim();
+                const phone =
+                    document.getElementById(
+                        "phone"
+                    ).value.trim();
 
-            const city =
-                document.getElementById("city").value.trim();
+                const city =
+                    document.getElementById(
+                        "city"
+                    ).value.trim();
 
-            const address =
-                document.getElementById("address").value.trim();
+                const address =
+                    document.getElementById(
+                        "address"
+                    ).value.trim();
 
 
-            /* =========================
-               BASIC VALIDATION
-            ========================= */
+                if (
+                    fullName === "" ||
+                    email === "" ||
+                    phone === "" ||
+                    city === "" ||
+                    address === ""
+                ) {
 
-            if (
-                fullName === "" ||
-                email === "" ||
-                phone === "" ||
-                city === "" ||
-                address === ""
-            ) {
+                    orderMessage.textContent =
+                        "Please complete all required fields.";
+
+                    orderMessage.style.color =
+                        "#ff3f7f";
+
+                    return;
+
+                }
+
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (!emailPattern.test(email)) {
+
+                    orderMessage.textContent =
+                        "Please enter a valid email address.";
+
+                    orderMessage.style.color =
+                        "#ff3f7f";
+
+                    return;
+
+                }
+
 
                 orderMessage.textContent =
-                    "Please complete all required fields.";
+                    "✓ Order placed successfully! Thank you, " +
+                    fullName + ".";
 
                 orderMessage.style.color =
-                    "#ff3f7f";
-
-                return;
-
-            }
+                    "#181818";
 
 
-            /* =========================
-               EMAIL VALIDATION
-            ========================= */
+                placeOrderButton.textContent =
+                    "ORDER PLACED ✓";
 
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                placeOrderButton.style.backgroundColor =
+                    "#181818";
 
-
-            if (!emailPattern.test(email)) {
-
-                orderMessage.textContent =
-                    "Please enter a valid email address.";
-
-                orderMessage.style.color =
-                    "#ff3f7f";
-
-                return;
+                placeOrderButton.disabled =
+                    true;
 
             }
-
-
-            /* =========================
-               SUCCESS MESSAGE
-            ========================= */
-
-            orderMessage.textContent =
-                "✓ Order placed successfully! Thank you, " +
-                fullName + ".";
-
-            orderMessage.style.color =
-                "#181818";
-
-
-            // Change button after successful order
-            placeOrderButton.textContent =
-                "ORDER PLACED ✓";
-
-            placeOrderButton.style.backgroundColor =
-                "#181818";
-
-
-            // Prevent submitting again
-            placeOrderButton.disabled = true;
-
-        });
+        );
 
     }
 
 
     /* =========================
-       INITIAL ORDER SUMMARY
+       STARTING VALUES
     ========================= */
 
-    updateOrderSummary();
+    updateOrder();
 
 });
-```
